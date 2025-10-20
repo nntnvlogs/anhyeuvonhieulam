@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+    />
+    <title>Món Quà Đặc Biệt 20/10</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;600;700&family=Great+Vibes&family=Playfair+Display:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+        overflow: hidden;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          #667eea 0%,
+          #764ba2 50%,
+          #f093fb 100%
+        );
+        position: relative;
+        font-family: "Playfair Display", serif;
+      }
+
+      /* Animated Background Particles */
+      .particles {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+      }
+
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        animation: float 15s infinite;
+      }
+
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) translateX(0) scale(1);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-100vh) translateX(50px) scale(0.5);
+          opacity: 0;
+        }
+      }
+
+      /* Main Container */
+      .container {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      /* Elegant Title */
+      .main-title {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(36px, 8vw, 80px);
+        color: #fff;
+        text-align: center;
+        margin-bottom: 60px;
+        text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+          0 0 40px rgba(255, 105, 180, 0.4);
+        animation: titleGlow 3s ease-in-out infinite;
+        opacity: 0;
+        transform: translateY(-30px);
+      }
+
+      body.loaded .main-title {
+        animation: titleAppear 1s ease-out forwards,
+          titleGlow 3s ease-in-out 1s infinite;
+      }
+
+      @keyframes titleAppear {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes titleGlow {
+        0%,
+        100% {
+          text-shadow: 0 0 20px rgba(255, 255, 255, 0.5),
+            0 0 40px rgba(255, 105, 180, 0.4);
+        }
+        50% {
+          text-shadow: 0 0 30px rgba(255, 255, 255, 0.8),
+            0 0 60px rgba(255, 105, 180, 0.6);
+        }
+      }
+
+      /* Premium Gift Box */
+      .gift-box-container {
+        position: relative;
+        width: min(200px, 35vw);
+        height: min(200px, 35vw);
+        cursor: pointer;
+        transition: transform 0.3s ease;
+      }
+
+      .gift-box-container:hover {
+        transform: scale(1.05);
+      }
+
+      .gift-box {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        animation: boxFloat 3s ease-in-out infinite;
+      }
+
+      body.loaded .gift-box {
+        animation: boxAppear 0.8s ease-out 0.5s forwards,
+          boxFloat 3s ease-in-out 1.3s infinite;
+        opacity: 0;
+        transform: scale(0);
+      }
+
+      @keyframes boxAppear {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes boxFloat {
+        0%,
+        100% {
+          transform: translateY(0) rotateY(0deg);
+        }
+        50% {
+          transform: translateY(-20px) rotateY(10deg);
+        }
+      }
+
+      .box-base {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 70%;
+        background: linear-gradient(135deg, #ff6b9d 0%, #c94a6d 100%);
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(255, 107, 157, 0.4);
+      }
+
+      .box-lid {
+        position: absolute;
+        bottom: 65%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 105%;
+        height: 35%;
+        background: linear-gradient(135deg, #ff8fb3 0%, #ff6b9d 100%);
+        border-radius: 8px 8px 4px 4px;
+        box-shadow: 0 5px 20px rgba(255, 107, 157, 0.3);
+        transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        transform-origin: bottom center;
+      }
+
+      .box-ribbon {
+        position: absolute;
+        width: 100%;
+        height: 15%;
+        background: linear-gradient(
+          90deg,
+          #ffd700 0%,
+          #ffed4e 50%,
+          #ffd700 100%
+        );
+        top: 45%;
+        left: 0;
+        box-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+      }
+
+      .box-ribbon::before {
+        content: "";
+        position: absolute;
+        width: 15%;
+        height: 200%;
+        background: linear-gradient(
+          180deg,
+          #ffd700 0%,
+          #ffed4e 50%,
+          #ffd700 100%
+        );
+        left: 42.5%;
+        top: -50%;
+        box-shadow: 0 2px 10px rgba(255, 215, 0, 0.5);
+      }
+
+      .box-bow {
+        position: absolute;
+        top: -15%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40%;
+        height: 30%;
+        background: #ffd700;
+        border-radius: 50%;
+        box-shadow: 0 5px 20px rgba(255, 215, 0, 0.6);
+      }
+
+      .box-bow::before,
+      .box-bow::after {
+        content: "";
+        position: absolute;
+        width: 60%;
+        height: 100%;
+        background: #ffd700;
+        border-radius: 50%;
+        top: 0;
+      }
+
+      .box-bow::before {
+        left: -30%;
+      }
+      .box-bow::after {
+        right: -30%;
+      }
+
+      /* Open Animation */
+      .gift-box-container.open .box-lid {
+        bottom: 85%;
+        transform: translateX(-50%) rotateX(-15deg);
+      }
+
+      /* Click Instruction */
+      .click-hint {
+        position: absolute;
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 18px;
+        font-family: "Dancing Script", cursive;
+        animation: pulse 2s ease-in-out infinite;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.6;
+          transform: translateX(-50%) scale(1);
+        }
+        50% {
+          opacity: 1;
+          transform: translateX(-50%) scale(1.1);
+        }
+      }
+
+      /* Letter Scene */
+      .letter-scene {
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.95);
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 100;
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+
+      .letter-scene.show {
+        display: flex;
+        opacity: 1;
+      }
+
+      .letter-card {
+        background: linear-gradient(135deg, #fff5f7 0%, #ffe4e9 100%);
+        border-radius: 20px;
+        padding: 40px;
+        max-width: 90vw;
+        width: 600px;
+        max-height: 80vh;
+        overflow-y: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        position: relative;
+        animation: cardAppear 0.6s ease-out;
+      }
+
+      @keyframes cardAppear {
+        from {
+          transform: scale(0.8) rotateX(-20deg);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1) rotateX(0);
+          opacity: 1;
+        }
+      }
+
+      .letter-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 40px;
+        height: 40px;
+        border: none;
+        background: #ff6b9d;
+        color: white;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(255, 107, 157, 0.4);
+      }
+
+      .letter-close:hover {
+        background: #ff8fb3;
+        transform: rotate(90deg);
+      }
+
+      .letter-title {
+        font-family: "Great Vibes", cursive;
+        font-size: clamp(28px, 5vw, 42px);
+        color: #ff6b9d;
+        text-align: center;
+        margin-bottom: 30px;
+        text-shadow: 0 2px 10px rgba(255, 107, 157, 0.2);
+      }
+
+      .letter-content {
+        font-family: "Playfair Display", serif;
+        font-size: clamp(16px, 2.5vw, 20px);
+        line-height: 1.8;
+        color: #444;
+        text-align: justify;
+        margin-bottom: 30px;
+        white-space: pre-wrap;
+      }
+
+      .letter-signature {
+        font-family: "Dancing Script", cursive;
+        font-size: clamp(18px, 3vw, 24px);
+        color: #ff6b9d;
+        text-align: right;
+        margin-top: 20px;
+        font-style: italic;
+      }
+
+      .letter-hearts {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .letter-heart {
+        width: 30px;
+        height: 30px;
+        background: #ff6b9d;
+        transform: rotate(45deg);
+        position: relative;
+        animation: heartBeat 1.5s ease-in-out infinite;
+      }
+
+      .letter-heart::before,
+      .letter-heart::after {
+        content: "";
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        background: #ff6b9d;
+        border-radius: 50%;
+      }
+
+      .letter-heart::before {
+        top: -15px;
+        left: 0;
+      }
+      .letter-heart::after {
+        left: 15px;
+        top: 0;
+      }
+
+      .letter-heart:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .letter-heart:nth-child(3) {
+        animation-delay: 0.4s;
+      }
+
+      @keyframes heartBeat {
+        0%,
+        100% {
+          transform: rotate(45deg) scale(1);
+        }
+        25% {
+          transform: rotate(45deg) scale(1.1);
+        }
+        50% {
+          transform: rotate(45deg) scale(0.95);
+        }
+        75% {
+          transform: rotate(45deg) scale(1.05);
+        }
+      }
+
+      .next-btn {
+        display: block;
+        margin: 30px auto 0;
+        padding: 15px 40px;
+        background: linear-gradient(135deg, #ff6b9d 0%, #c94a6d 100%);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        font-size: 18px;
+        font-family: "Dancing Script", cursive;
+        cursor: pointer;
+        box-shadow: 0 10px 30px rgba(255, 107, 157, 0.4);
+        transition: all 0.3s ease;
+      }
+
+      .next-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(255, 107, 157, 0.6);
+      }
+
+      .next-btn:active {
+        transform: translateY(-1px);
+      }
+
+      /* Final Gift Image */
+      .gift-image-scene {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(
+          135deg,
+          rgba(102, 126, 234, 0.95) 0%,
+          rgba(118, 75, 162, 0.95) 100%
+        );
+        display: none;
+        align-items: center;
+        justify-content: center;
+        z-index: 200;
+        opacity: 0;
+        transition: opacity 0.8s ease;
+      }
+
+      .gift-image-scene.show {
+        display: flex;
+        opacity: 1;
+      }
+
+      .gift-image-wrapper {
+        position: relative;
+        max-width: 90vw;
+        max-height: 90vh;
+        animation: imageZoom 1s ease-out;
+      }
+
+      @keyframes imageZoom {
+        from {
+          transform: scale(0.5);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      .gift-image {
+        max-width: 100%;
+        max-height: 80vh;
+        border-radius: 20px;
+        box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+      }
+
+      .gift-caption {
+        position: absolute;
+        bottom: -60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+        color: white;
+        font-family: "Dancing Script", cursive;
+        font-size: clamp(20px, 4vw, 32px);
+        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      }
+
+      /* Loading */
+      .loader {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+        transition: opacity 0.5s ease;
+      }
+
+      .loader.hide {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .spinner {
+        width: 60px;
+        height: 60px;
+        border: 4px solid rgba(255, 255, 255, 0.3);
+        border-top-color: white;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Responsive */
+      @media (max-width: 600px) {
+        .letter-card {
+          padding: 30px 20px;
+        }
+        .gift-box-container {
+          width: min(150px, 40vw);
+          height: min(150px, 40vw);
+        }
+        .click-hint {
+          bottom: -60px;
+          font-size: 16px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Loading -->
+    <div class="loader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Animated Background -->
+    <div class="particles" id="particles"></div>
+
+    <!-- Main Container -->
+    <div class="container">
+      <h1 class="main-title">Chúc Mừng Ngày Phụ Nữ Việt Nam 20/10</h1>
+
+      <div class="gift-box-container" id="giftBox">
+        <div class="gift-box">
+          <div class="box-lid">
+            <div class="box-bow"></div>
+          </div>
+          <div class="box-base"></div>
+          <div class="box-ribbon"></div>
+        </div>
+        <div class="click-hint">Nhấn để mở quà ✨</div>
+      </div>
+    </div>
+
+    <!-- Letter Scene -->
+    <div class="letter-scene" id="letterScene">
+      <div class="letter-card">
+        <button class="letter-close" id="letterClose">×</button>
+        <h2 class="letter-title" id="letterTitle"></h2>
+        <div class="letter-hearts">
+          <div class="letter-heart"></div>
+          <div class="letter-heart"></div>
+          <div class="letter-heart"></div>
+        </div>
+        <p class="letter-content" id="letterContent"></p>
+        <p class="letter-signature" id="letterSignature"></p>
+        <button class="next-btn" id="nextBtn">
+          Xem kỉ niệm ở đây nò vợ iu →
+        </button>
+      </div>
+    </div>
+
+    <!-- Gift Image Scene -->
+    <div class="gift-image-scene" id="giftImageScene">
+      <div class="gift-image-wrapper">
+        <img
+          src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800"
+          alt="Hoa hồng"
+          class="gift-image"
+          id="giftImage"
+        />
+        <p class="gift-caption" id="giftCaption"></p>
+      </div>
+    </div>
+
+    <script>
+      // ===============================
+      // 🎀 Cấu hình dữ liệu món quà
+      // ===============================
+      const giftData = {
+        letterTitle: "Gửi Người Phụ Nữ Tuyệt Vời Của Anh 💕",
+        letterContent: `Chúc Trinh của anh 20/10 ngập tràn hạnh phúc và yêu thương.
+Cảm ơn em đã đến và làm cho cuộc sống của anh trở nên ý nghĩa hơn.
+Anh mong rằng chúng ta sẽ mãi nắm tay nhau, cùng bước qua mọi chặng đường phía trước.
+Anh yêu em hơn những gì anh có thể nói bằng lời. 💖`,
+        letterSignature: "Với tất cả tình yêu của anh ❤️",
+        memories: [
+          {
+            url: "/allbum/adc.jpg",
+            caption: "Khoảnh khắc đầu tiên anh được chụp hình chung với em 💞",
+          },
+          {
+            url: "/allbum/11111111111111111111111111111111111.jpg",
+            caption: "Lần đầu tiên anh thổ lộ với em về tình cảm của anh🌷",
+          },
+          {
+            url: "/allbum/baka.jpg",
+            caption: "Em là người anh muốn chăm cả đời 💑",
+          },
+          {
+            url: "/allbum/dulich.jpg",
+            caption: "Lần đầu tiên chúng mình đi du lịch cùng nhau 🏖️",
+          },
+        ],
+      };
+
+      // ===============================
+      // 🌸 Hiệu ứng nền và chữ
+      // ===============================
+      function createParticles() {
+        const container = document.getElementById("particles");
+        for (let i = 0; i < 50; i++) {
+          const particle = document.createElement("div");
+          particle.className = "particle";
+          particle.style.left = Math.random() * 100 + "%";
+          particle.style.animationDelay = Math.random() * 15 + "s";
+          particle.style.animationDuration = Math.random() * 10 + 10 + "s";
+          container.appendChild(particle);
+        }
+      }
+
+      function typeText(element, text, speed = 50) {
+        return new Promise((resolve) => {
+          let i = 0;
+          element.textContent = "";
+          const interval = setInterval(() => {
+            if (i < text.length) {
+              element.textContent += text.charAt(i);
+              i++;
+            } else {
+              clearInterval(interval);
+              resolve();
+            }
+          }, speed);
+        });
+      }
+
+      // ===============================
+      // 🎁 Hoạt động chính
+      // ===============================
+      window.addEventListener("load", () => {
+        createParticles();
+
+        setTimeout(() => {
+          document.querySelector(".loader").classList.add("hide");
+          document.body.classList.add("loaded");
+        }, 1500);
+
+        const giftBox = document.getElementById("giftBox");
+        const letterScene = document.getElementById("letterScene");
+        const imageScene = document.getElementById("giftImageScene");
+        const imageEl = document.getElementById("giftImage");
+        const captionEl = document.getElementById("giftCaption");
+
+        // Khi nhấn mở quà 🎁
+        giftBox.addEventListener("click", () => {
+          if (giftBox.classList.contains("open")) return;
+          giftBox.classList.add("open");
+
+          setTimeout(() => {
+            letterScene.classList.add("show");
+
+            const titleEl = document.getElementById("letterTitle");
+            const contentEl = document.getElementById("letterContent");
+            const signatureEl = document.getElementById("letterSignature");
+
+            typeText(titleEl, giftData.letterTitle, 80)
+              .then(() => typeText(contentEl, giftData.letterContent, 40))
+              .then(() => typeText(signatureEl, giftData.letterSignature, 60));
+          }, 1000);
+        });
+
+        // Đóng thư 💌
+        document
+          .getElementById("letterClose")
+          .addEventListener("click", () =>
+            letterScene.classList.remove("show")
+          );
+
+        // Xem ảnh kỷ niệm ❤️
+        document.getElementById("nextBtn").addEventListener("click", () => {
+          letterScene.classList.remove("show");
+          imageScene.classList.add("show");
+
+          let index = 0;
+
+          function showMemory() {
+            const memory = giftData.memories[index];
+            imageEl.src = memory.url;
+            captionEl.textContent = "";
+
+            // Hiệu ứng caption
+            typeText(captionEl, memory.caption, 50);
+
+            index = (index + 1) % giftData.memories.length;
+          }
+
+          showMemory();
+
+          // Chuyển ảnh sau mỗi 5 giây
+          setInterval(showMemory, 5000);
+        });
+      });
+    </script>
+  </body>
+</html>
